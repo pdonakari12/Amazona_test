@@ -36,7 +36,7 @@ module.exports= {
         _id:'4',
         name:'Best Pants',
         category:'Pants',
-        image:'/images/d1.jpg',
+        image:'https://www.lafuma.com/media/catalog/product/cache/18/image/9df78eab33525d08d6e5fb8d27136e95/l/f/lfv11318-2768-pantalon-homme-access-cargo-pants-m-beige_1.jpg',
         price:70,
         brand:'Nike',
         rating:4.3,

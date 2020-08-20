@@ -8,7 +8,7 @@ const { default: Axios } = require("axios")
 const addToCart = (productId ,qty)=> async(dispathch,getState)=>{
 
     try {
-        const {data}=await Axios.get("/api/products/"+productId);
+        const {data}=await Axios.get("http://localhost:5000/api/products/"+productId);
         dispathch({type: CART_ADD_ITEM,payload:{
             product:data._id,
             name:data.name,

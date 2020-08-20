@@ -4,8 +4,26 @@ const dotenv = require('dotenv');
 const config = require('./config'); 
 const mongoose = require('mongoose');
 const userRoute = require('./routes/userRoutes');
+const cors=require('cors');
+const bodyParser=require('body-parser');
 
-console.log("string",config);
+const app = express();
+app.use(bodyParser.json());
+var whitelist = ['http://localhost:3000']
+var corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
+
+// Then pass them to cors:
+app.use(cors(corsOptions));
+
+
 
 dotenv.config();
 
@@ -17,7 +35,7 @@ mongoose.connect(mongodbUrl, {
 }).catch(error=>console.log(error.reason));
 
 
-const app = express();
+
 
 app.use("/api/users",userRoute);
 
@@ -33,6 +51,7 @@ app.get("/api/products/:id",(req , res) => {
 
 app.get("/api/products",(req,res)=>
 {
+    
     res.send(data.products);
 });
 
