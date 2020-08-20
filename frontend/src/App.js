@@ -6,8 +6,13 @@ import data from './data'
 import HomeScreen from './screens/HomeScreen';
 import ProductScreen from './screens/ProductScreen';
 import CartScreen from './screens/CartScreen';
+import SigninScreen from './screens/SigninScreen';
+
+
 
 function App() {
+  //const userSignin=userSelector((state)=>state.userSignin)
+  //const {userInfo}=userSignin;
 const openMenu=()=>{
   document.querySelector(".sidebar").classList.add("open");
 }
@@ -27,7 +32,10 @@ const closeMenu=()=>{
        </div>
        <div className="header-links">
            <a href="cart.html">Cart</a>
-           <a href="Signin.html">Sign In</a>
+           <Link to="/signin">Sign In</Link>
+       
+          
+           
 
        </div>
     </header >
@@ -44,6 +52,7 @@ const closeMenu=()=>{
   
     <main className="main">
         <div className="content">
+          <Route path="/signin" component={SigninScreen}/>
           <Route path="/product/:id" component={ProductScreen}/>
           <Route path="/Cart/:id?" component={CartScreen}/>
           <Route path="/" exact={true} component={HomeScreen}/>
